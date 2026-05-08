@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Coffee </title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #f4f1ee;
+}
+
+/* HEADER */
+header {
+    background: #4b2e2e;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+nav a {
+    color: #f5deb3;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* SLIDER */
+.slider {
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    width: 300%;
+    animation: slide 15s infinite;
+}
+
+.slide {
+    width: 100%;
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+}
+
+.slide1 { background-image: url("https://images.unsplash.com/photo-1509042239860-f550ce710b93"); }
+.slide2 { background-image: url("https://images.unsplash.com/photo-1511920170033-f8396924c348"); }
+.slide3 { background-image: url("7.jpg"); }
+
+@keyframes slide {
+    0% { margin-left: 0; }
+    33% { margin-left: -100%; }
+    66% { margin-left: -200%; }
+}
+
+/* SECTIONS */
+section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+h2 {
+    color: #4b2e2e;
+    margin-bottom: 30px;
+}
+
+/* CARDS */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.card h3 {
+    margin-top: 15px;
+    color: #3b2a25;
+}
+
+/* ORDER FORM */
+.form-box {
+    max-width: 450px;
+    margin: auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+label {
+    display: block;
+    text-align: left;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+button {
+    margin-top: 25px;
+    width: 100%;
+    padding: 12px;
+    background: #4b2e2e;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #3b1f1f;
+}
+
+/* SUCCESS MESSAGE */
+#success {
+    display: none;
+    background: linear-gradient(135deg, #4b2e2e, #7b4b4b);
+    color: #fff;
+    padding: 80px 20px;
+}
+
+.success-box {
+    background: rgba(0,0,0,0.4);
+    padding: 40px;
+    border-radius: 20px;
+    max-width: 500px;
+    margin: auto;
+}
+
+footer {
+    background: #4b2e2e;
+    color: #fff;
+    text-align: center;
+    padding: 15px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>☕ Coffee Bliss</h1>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#coffees">Coffees</a>
+        <a href="#menu">Order</a>
+    </nav>
+</header>
+
+<!-- SLIDER -->
+<div class="slider" id="home">
+    <div class="slides">
+        <div class="slide slide1"></div>
+        <div class="slide slide2"></div>
+        <div class="slide slide3"></div>
+    </div>
+</div>
+
+<!-- COFFEE VARIETIES -->
+<section id="coffees">
+    <h2>Our Coffee Varieties</h2>
+    <div class="cards">
+        <div class="card">
+            <img src="2.webp">
+            <h3>Espresso</h3>
+            <p>Strong and bold flavor.</p>
+        </div>
+
+        <div class="card">
+            <img src="4.jpg">
+            <h3>Cappuccino</h3>
+            <p>Perfect milk foam balance.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93">
+            <h3>Latte</h3>
+            <p>Smooth & creamy coffee.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348">
+            <h3>Mocha</h3>
+            <p>Chocolate coffee delight.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ORDER FORM -->
+<section id="menu">
+    <h2>Order Your Coffee</h2>
+    <div class="form-box">
+        <label>Name</label>
+        <input type="text" id="name" required>
+
+        <label>Select Coffee</label>
+        <select id="coffee">
+            <option>Espresso</option>
+            <option>Cappuccino</option>
+            <option>Latte</option>
+            <option>Mocha</option>
+        </select>
+
+        <label>Quantity</label>
+        <input type="number" id="qty" value="1" min="1">
+
+        <button onclick="placeOrder()">Order Now ☕</button>
+    </div>
+</section>
+
+<!-- SUCCESS SECTION -->
+<section id="success">
+    <div class="success-box">
+        <h2>🎉 Order Successful!</h2>
+        <p id="orderText"></p>
+        <p>Thank you for choosing Coffee Bliss ☕</p>
+        <button onclick="location.reload()">Order Again</button>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Coffee Bliss | Fresh Brew Everyday</p>
+</footer>
+
+<script>
+function placeOrder() {
+    const name = document.getElementById("name").value;
+    const coffee = document.getElementById("coffee").value;
+    const qty = document.getElementById("qty").value;
+
+    if (name === "") {
+        alert("Please enter your name");
+        return;
+    }
+
+    document.getElementById("menu").style.display = "none";
+    document.getElementById("success").style.display = "block";
+    document.getElementById("orderText").innerText =
+        name + ", your order for " + qty + " " + coffee + "(s) has been placed successfully!";
+}
+</script>
+
+</body>
+</html>
